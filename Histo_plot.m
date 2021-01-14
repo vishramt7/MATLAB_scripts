@@ -1,0 +1,20 @@
+infile=input('Enter the file name', 's');
+data=dlmread(infile,'');
+[pathstr,name,ext]=fileparts(infile);
+size (data)
+x=reshape (data(:,1),101,101);
+y=reshape (data(:,2),101,101);
+z=reshape (data(:,3),101,101);
+pcolor(x,y,z);
+works = load ('/home/user/Vishram/Scripts/2D_plot_scripts/colormap_works');
+works=flipud(works);
+colormap(works);
+shading flat;
+caxis([0 7]);
+colorbar;
+'FontSize', 20;
+xlabel ('IntraQ');
+ylabel ('InterQ');
+%axis ([1,20,1,50]);
+axis equal square tight;
+print ('-djpeg',name);
